@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <title>蛋鸡数据自动计算工具</title>
 </head>
+  <link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="icon-192.png">
 <body>
   <h2>蛋鸡数据自动计算工具</h2>
   <p>请在下方输入每天的实际数据，系统将自动计算相关指标。</p>
@@ -41,4 +45,9 @@
     }
   </script>
 </body>
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
 </html>
