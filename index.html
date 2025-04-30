@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>蛋鸡数据自动计算工具</title>
+</head>
+<body>
+  <h2>蛋鸡数据自动计算工具</h2>
+  <p>请在下方输入每天的实际数据，系统将自动计算相关指标。</p>
+  <form id="eggForm">
+    存栏: <input type="number" id="live" value="3300"><br>
+    死亡: <input type="number" id="dead" value="5"><br>
+    淘汰: <input type="number" id="eliminate" value="2"><br>
+    产蛋数: <input type="number" id="eggs" value="2900"><br>
+    合格蛋: <input type="number" id="qualified" value="2800"><br>
+    用料(kg): <input type="number" id="feed" value="265"><br><br>
+    <input type="button" value="计算" onclick="calculate()">
+  </form>
+
+  <h3>计算结果：</h3>
+  <ul id="results"></ul>
+
+  <script>
+    function calculate() {
+      var live = parseFloat(document.getElementById('live').value);
+      var dead = parseFloat(document.getElementById('dead').value);
+      var eliminate = parseFloat(document.getElementById('eliminate').value);
+      var eggs = parseFloat(document.getElementById('eggs').value);
+      var qualified = parseFloat(document.getElementById('qualified').value);
+      var feed = parseFloat(document.getElementById('feed').value);
+
+      let results = "";
+      results += "<li>死亡率: " + ((dead / live) * 100).toFixed(2) + "%</li>";
+      results += "<li>淘汰率: " + ((eliminate / live) * 100).toFixed(2) + "%</li>";
+      results += "<li>产蛋率: " + ((eggs / live) * 100).toFixed(2) + "%</li>";
+      results += "<li>合格蛋率: " + ((qualified / eggs) * 100).toFixed(2) + "%</li>";
+      results += "<li>料蛋比: " + (feed / eggs).toFixed(3) + "</li>";
+
+      document.getElementById("results").innerHTML = results;
+    }
+  </script>
+</body>
+</html>
